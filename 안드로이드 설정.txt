@@ -1,0 +1,76 @@
+
+0. 들어가기 앞서
+
+  1) 자바 라이센스 문제
+  2) 스위프트, 코틀린
+
+1. 설치하기  ( https://developer.android.com )
+
+  1) android-studio-ide-145.3360264-windows.zip (수동설치)
+
+     -압축풀기
+     /bin/studio64.exe   64bit 설치
+
+     ※ 위저드 화면 종료
+     Configure > Project Default > Project Structure : C:/SDK 지정
+
+     -start android
+       -Company Domain : example 제외
+     -Project location : C:\android_study\work\FirstApp
+     -Target Android Devices : API 19: Android 4.4 (KitKat)
+     -Activity Wizard
+       Activity/Layout 쌍
+
+     1.IDE 세팅 
+         파일 > 세팅  : Font, Block comment, Line comment, XML Comment
+                        Editor>Auto Import>체크
+
+         Project  (이클립스 패키지 익스플로러)
+         Packages
+         Android
+
+     2.AVD 세팅
+       -Nexus 4  4.7  768 x1280 xhdpi (테스트하기 적합)
+       -x86 Images (KitKat) - 스마트폰 에뮬레이터 이미지 
+       -HAXM (추천:AVD 가속기)  VT-x 시큐리티
+        
+     3.스마트폰 세팅하기
+       -삼성통합ust드라이버 설치
+       
+     4.다른에뮬
+     https://www.genymotion.com/account/login/
+     studygroup/studygroup0987
+
+     
+
+  2) installer_r24.4.1-windows.exe  (c:/sdk 설치)
+
+     1.안드로이드 버전 (디저트를 알파벳순으로)
+
+     2.안드로이드 SDK 매니저 (버전별 다운로드 및 관리)
+
+       -Tools : 이전버전 라이브러리
+       -Android 7.1.1 (API 25) - 누가
+       -Android 6.0 (API 23) - 마시멜로
+        .....
+       -Android 4.1.2 (API 16)
+       
+       -Extras (추가 라이브러리)
+
+       -SDK 매니저, AVD (Android Virtual Device) 매니저
+
+     3.
+
+
+ 2. 안드로이드 스튜디오
+  [단축키] 안드로이드 단축키는 [Help→ Default Keymap Reference]로 확인 
+  -shift + f10 : 실행하기
+  -Alt + Insert  Setter/Getter 메소드 추가
+  
+
+  1. app>src>main>       - activity
+  2. app>src>res>layout  -  activity_main.xml 
+  3. build.gradle (버전 및 라이브러리 관리)
+     dependency (라이브러리 추가)
+     dafaultConfig 
+

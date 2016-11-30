@@ -1,0 +1,38 @@
+
+
+1. RelativeLayout - 방향성이없다.
+
+2. LinearLayout  - 가로로 나열 (가로방향)
+   -orientation="horizontal"
+   -orientation="vertical"
+
+
+3. layout 파일 <-- 대문자로 시작한다. 클래스이기 때문
+
+    TextView
+
+     android:layout_width="wrap_content"   //갖고있는 내용만큼 차지
+
+     android:layout_height="match_parent"  //부모높이와 동일 (fill_parent)
+                                           //위치가 위에 있는것은 영향을 안받음
+                                           //아래에 있는것들만 영향을 받음
+
+4. AndroidManifest.xml   //액티비티 속성관리 및 권한설정
+    main이 없다.
+    
+    activity <intent-filter>의 <action android:name/>에서 MAIN 지정  
+    <activity android:name=".LinearActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+     </activity>
+        
+
+※암시적 인텐트(전달자)
+  - 인텐트는 안드로이드 시스템에서 커뮤니케이션을 담당하는 역할
+  - 컴포넌트간(Activity, ContentProvider, BroadcastReceiver, Service)의 
+    호출과 메시지 전달에 이용
+  
+    Intent i = new Intent(FirstrActivity.this, SecondActivity.class);
+    startActivity(i);
