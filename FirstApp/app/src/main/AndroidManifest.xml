@@ -10,10 +10,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".LinearActivity" />
-        <activity android:name=".FrameActivity"></activity>
-        <activity android:name=".testActivity">
-        </activity>
+        <activity android:name=".FrameActivity" />
+        <activity android:name=".testActivity"></activity>
         <activity android:name=".Relative_Activity">
+        </activity>
+        <activity android:name=".Linear2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
