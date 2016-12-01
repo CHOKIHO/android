@@ -17,6 +17,9 @@
         <activity android:name=".Event2Activity">
         </activity>
         <activity android:name=".WeightActivity">
+
+        </activity>
+        <activity android:name=".TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

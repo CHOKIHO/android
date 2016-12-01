@@ -62,7 +62,7 @@ public class Event2Activity extends AppCompatActivity {
                 }
 
                 if (editstr.equalsIgnoreCase(tmp)) {
-                    txt.setText("TRUE");
+                    txt.setText("회문수");
                 } else {
                     txt.setText("FALSE");
                 }
