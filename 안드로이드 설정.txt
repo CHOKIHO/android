@@ -21,8 +21,11 @@
      -Activity Wizard
        Activity/Layout 쌍
 
-     1.IDE 세팅 
-         파일 > 세팅  : Font, Block comment, Line comment, XML Comment
+     1.IDE 기본세팅 
+         파일 > 세팅  : Font, Editor
+		                Colors & Fonts >Java > Comments
+ 							     --Block comment, Line comment, 
+							                       >XML > Comment
                         Editor>Auto Import>체크
 
          Project  (이클립스 패키지 익스플로러)

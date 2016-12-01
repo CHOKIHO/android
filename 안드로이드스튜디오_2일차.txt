@@ -1,0 +1,25 @@
+
+
+Activity 기본적으로 AppCompatActivity를 상속받고 시작한다.
+
+onCreate(Bundle savedInstanceState) {
+	setContentView(R.layout.activity_life);
+}
+
+<액티비티 라이프사이클 실행단계>
+
+onCreate
+onStart
+onResume
+
+onResume
+onPause
+onStop
+
+onRestart
+onStart
+onResume
+
+onPause
+onStop
+OnCreate
