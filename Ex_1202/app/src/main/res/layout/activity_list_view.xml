@@ -17,7 +17,13 @@
         android:layout_height="wrap_content"
         android:inputType="text"/>
 
+    <!-- 새로운값 자동 스크롤 transcriptMode
+         오른쪽 스크롤 안보이기 scrollbars
+         위아래 바운딩 표시 overScrollMode
+    -->
     <ListView
+        android:transcriptMode="alwaysScroll"
+
         android:id="@+id/myList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

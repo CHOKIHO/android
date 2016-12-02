@@ -28,7 +28,7 @@ public class ListViewActivity extends AppCompatActivity {
 
         arr = new ArrayList<>();
         //리스트뷰 항목 구현을 위해 어댑터생성
-        adapter = new MyAdapter(ListViewActivity.this, R.layout.list_form, arr);
+        adapter = new MyAdapter(ListViewActivity.this, R.layout.list_form, arr, myList);
 
         //생성된 어댑터 연결
         myList.setAdapter(adapter);
@@ -42,6 +42,7 @@ public class ListViewActivity extends AppCompatActivity {
                 arr.add(text);
 
                 if (myList != null) {
+
                     //어댑터갱신
                     adapter.notifyDataSetChanged();
                 }

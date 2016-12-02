@@ -10,10 +10,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".TouchEventActivity" />
-        <activity android:name=".LotActivity"></activity>
-        <activity android:name=".InflaterActivity">
-        </activity>
+        <activity android:name=".LotActivity" />
+        <activity android:name=".InflaterActivity"></activity>
         <activity android:name=".ListViewActivity">
+        </activity>
+        <activity android:name=".CustomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
