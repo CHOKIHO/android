@@ -49,12 +49,12 @@ public class LotActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (view == btn_re) {
-                num = rnd.nextInt(4)+1;
+                num = rnd.nextInt(4) + 1;
                 txt_result.setText("RESULT");
                 Log.d("MY", "num: " + num);
-            }else{
+            } else {
                 //버튼값 1, 2, 3, 4 받기
-                String number = ((Button)view).getText().toString();
+                String number = ((Button) view).getText().toString();
 
                 int n = Integer.parseInt(number);
 
@@ -66,19 +66,6 @@ public class LotActivity extends AppCompatActivity {
             }
         }
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

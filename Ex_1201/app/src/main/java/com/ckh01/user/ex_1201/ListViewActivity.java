@@ -23,8 +23,10 @@ public class ListViewActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, arr);
 
+        ArrayAdapter<String> adapter2 =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arr);
 
         //어댑터를 리스트뷰에 연결
-        list.setAdapter(adapter);
+        list.setAdapter(adapter2);
     }
 }

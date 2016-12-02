@@ -27,7 +27,8 @@ public class ListViewActivity extends AppCompatActivity {
         myList = (ListView) findViewById(R.id.myList);
 
         arr = new ArrayList<>();
-        //리스트뷰 항목 구현을 위해 어댑터생성
+
+        //리스트뷰 항목 구현을 위해 어댑터 생성
         adapter = new MyAdapter(ListViewActivity.this, R.layout.list_form, arr, myList);
 
         //생성된 어댑터 연결

@@ -38,7 +38,9 @@ public class CustomActivity extends AppCompatActivity {
 
             //weight 주기
             LinearLayout.LayoutParams params =
-                    new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+                    new LinearLayout.LayoutParams(
+                            ActionBar.LayoutParams.WRAP_CONTENT,
+                            ActionBar.LayoutParams.WRAP_CONTENT  );
 
             params.weight=1;
             b.setLayoutParams(params);

@@ -58,10 +58,11 @@ public class TouchEventActivity extends AppCompatActivity {
                         result = "x :" + x + ", y :" + y;
                         break;
                 }
+
                 txt_view.setText(result);
 
                 //return값은 true일때만 적용되지만,
-                //ACTION_DOWN의 경우 리턴값에 관계없이 적용된다.
+                //ACTION_DOWN의 경우 리턴값에 관계없이 적용된다. (이벤트 발생여부확인)
                 return isCheck;
             }
         });

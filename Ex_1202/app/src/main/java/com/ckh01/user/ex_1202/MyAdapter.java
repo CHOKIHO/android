@@ -28,6 +28,7 @@ public class MyAdapter extends ArrayAdapter<String>{
     ListView list;
     static int num=0;
 
+    //파라메터중 resource가 중요  R.layout.list_form이 resource로 넘어온다.
     public MyAdapter(Context context, int resource, ArrayList<String> arr, ListView list) {
         //ListView는 넘길수 없다
         super(context, resource, arr);
@@ -48,8 +49,6 @@ public class MyAdapter extends ArrayAdapter<String>{
             Toast.makeText(getContext(), arr.get(i).toString(), Toast.LENGTH_SHORT ).show();
         }
     };
-
-
 
     @NonNull
     @Override
@@ -74,7 +73,4 @@ public class MyAdapter extends ArrayAdapter<String>{
 
         return convertView;
     }
-
-
-
 }

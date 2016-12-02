@@ -28,7 +28,9 @@ public class InflaterActivity extends AppCompatActivity {
 
         //xml파일 객체화
          /*
-          -LayoutInflater를 사용하려면 서비스 등록
+          -LayoutInflater를 사용하려면 서비스 요청
+
+          ※getSystemService
           -주어진 매개변수에 대응되는 안드로이드가 제공하는 시스템-레벨 서비스를 요청
            메모리내 클래스의 인스턴스를 생성하는것이 아니라, 시스템에서 제공하는
            디바이스나 안드로이드 프레임워크내 기능을 다른 애플리케이션과 공유하고자
@@ -41,11 +43,10 @@ public class InflaterActivity extends AppCompatActivity {
         //인플레이터를 통해 sub(View) 객체화시켜 parent에 add
         sub = linf.inflate(R.layout.sub_layout, parent);
 
-
         //parent.addView(sub);
         //------------------------------------------------------------
 
-        //sub_layout의 btn_event버튼 찾기
+        //sub_layout의 btn_event 버튼 찾기
         Button event = (Button)sub.findViewById(R.id.btn_event);
         event.setOnClickListener(new View.OnClickListener() {
             @Override
