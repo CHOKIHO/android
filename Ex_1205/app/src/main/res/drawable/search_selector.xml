@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 버튼 클릭후 이미지 -->
+    <item android:state_pressed="true"
+        android:drawable="@mipmap/a_search"/>
+    <!-- 버튼 클릭전 이미지 -->
+    <item android:state_pressed="false"
+        android:drawable="@mipmap/b_search"/>
+
+
+</selector>
