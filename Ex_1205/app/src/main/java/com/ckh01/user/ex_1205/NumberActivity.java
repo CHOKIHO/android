@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class NumberActivity extends AppCompatActivity {
 
     Button btn_start, btn_yes, btn_no;
-    TextView txt_showNumber;
+    TextView txt_showNumber, txt_question;
     String strNums;
 
     int[][] sarr = { {4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30},
@@ -23,7 +24,6 @@ public class NumberActivity extends AppCompatActivity {
     int level = 0;
     boolean flag;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class NumberActivity extends AppCompatActivity {
         btn_no = (Button) findViewById(R.id.btn_no);
 
         txt_showNumber = (TextView) findViewById(R.id.txt_showNumber);
+        txt_question = (TextView) findViewById(R.id.txt_question);
 
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +42,21 @@ public class NumberActivity extends AppCompatActivity {
                 level=0;
                 result=0;
                 flag= true;
+
+                txt_question.setVisibility(View.VISIBLE);
+                btn_yes.setVisibility(View.VISIBLE);
+                btn_no.setVisibility(View.VISIBLE);
+
+
                 txt_showNumber.setText(printNumber(level));
+
+                //Intent를 통한 재시작
+/*
+                Intent i = new Intent(NumberActivity.this, NumberActivity.class);
+                startActivity(i);
+                finish();
+*/
+
             }
         });
 
@@ -63,17 +78,18 @@ public class NumberActivity extends AppCompatActivity {
                 case R.id.btn_yes:
                     Log.d("MY", "onClick: btn_yes");
 
-                    if (level==0) {
-                        result +=4;
+                    if (level == 0) {
+                        result += 4;
                     } else if (level == 1) {
-                        result +=16;
+                        result += 16;
                     } else if (level == 2) {
-                        result +=1;
+                        result += 1;
                     } else if (level == 3) {
                         result += 8;
                     } else if (level == 4) {
-                        result +=2;
+                        result += 2;
                     }
+
                     break;
                 case R.id.btn_no:
                     break;
@@ -88,6 +104,10 @@ public class NumberActivity extends AppCompatActivity {
 
                 level=0;
                 flag = false;
+                txt_question.setVisibility(View.GONE);
+                btn_yes.setVisibility(View.GONE);
+                btn_no.setVisibility(View.GONE);
+
 
             } else {
                 txt_showNumber.setText(printNumber(++level));

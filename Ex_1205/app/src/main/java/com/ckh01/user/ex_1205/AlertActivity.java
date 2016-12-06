@@ -42,9 +42,17 @@ public class AlertActivity extends AppCompatActivity {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(AlertActivity.this);
 
+/*
         dialog.setTitle("종료");
         dialog.setMessage("종료하시겠습니까?");
         dialog.setIcon(R.mipmap.ic_launcher);
+*/
+
+        //Builder 특징을 이용해서
+        dialog.setTitle("종료")
+              .setMessage("종료할까요?")
+              .setIcon(R.mipmap.ic_launcher);
+
 
         dialog.setPositiveButton("예", click);
         //dialog.setNeutralButton("maybe", click);
