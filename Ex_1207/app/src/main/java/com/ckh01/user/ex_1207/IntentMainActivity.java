@@ -62,6 +62,8 @@ public class IntentMainActivity extends AppCompatActivity {
 
                 //intent에 bundle을 추가  (메서드이름은 putExtras)
                 intent.putExtras(bundle);
+
+                //액티비티 전환
                 startActivity(intent);
             }
         });
@@ -82,7 +84,6 @@ public class IntentMainActivity extends AppCompatActivity {
                 //날짜선택 다이얼로그 생성 및 이벤트 리스너 등록
                 dialog = new DatePickerDialog(IntentMainActivity.this, dateListener, y, m, d);
                 dialog.show();
-
             }
         });
 
@@ -97,5 +98,4 @@ public class IntentMainActivity extends AppCompatActivity {
             edit_birth.setText(str);
         }
     };
-
 }

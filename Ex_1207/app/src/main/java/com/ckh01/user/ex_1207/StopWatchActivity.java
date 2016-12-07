@@ -57,7 +57,7 @@ public class StopWatchActivity extends AppCompatActivity {
                             myBaseTime = SystemClock.elapsedRealtime();
 
                             //시간 갱신 핸들러 호출
-                            mYTimer.sendEmptyMessage(0);
+                            myTimer.sendEmptyMessage(0);
 
                             //버튼활성화
                             btn_start.setText("정지");
@@ -68,7 +68,7 @@ public class StopWatchActivity extends AppCompatActivity {
                             break;
 
                         case RUN:
-                            mYTimer.removeMessages(0);
+                            myTimer.removeMessages(0);
                             myPauseTime = SystemClock.elapsedRealtime();
 
                             btn_start.setText("시작");
@@ -79,7 +79,7 @@ public class StopWatchActivity extends AppCompatActivity {
 
                         case PAUSE:
                             long now = SystemClock.elapsedRealtime();
-                            mYTimer.sendEmptyMessage(0);
+                            myTimer.sendEmptyMessage(0);
                             myBaseTime += now - myPauseTime;
 
                             btn_start.setText("정지");
@@ -118,7 +118,7 @@ public class StopWatchActivity extends AppCompatActivity {
     };
 
     //시간갱신 핸들러 → handlemessage
-    Handler mYTimer = new Handler(){
+    Handler myTimer = new Handler(){
 
         @Override
         public void handleMessage(Message msg) {
@@ -126,7 +126,7 @@ public class StopWatchActivity extends AppCompatActivity {
             time_out.setText(getTime());
 
             //최고속도로 반복 (while 루프)
-            mYTimer.sendEmptyMessage(0);
+            myTimer.sendEmptyMessage(0);
         }
     };
 

@@ -18,7 +18,6 @@ public class IntentSubActivity extends AppCompatActivity {
         txt_age = (TextView) findViewById(R.id.txt_age);
         txt_birth = (TextView) findViewById(R.id.txt_birth);
 
-
         //파라메터로 받은 intnet로 생성.
         Intent intent = getIntent();
 
