@@ -36,5 +36,4 @@ public class BackActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "한번 더 뒤로가기 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

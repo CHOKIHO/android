@@ -36,13 +36,13 @@ public class IntentSubActivity extends AppCompatActivity {
                 startActivity(intent);
 
 /*
-                //※ 액티비티가 3개 이상일경우엔 Intent_Flag를 효과적이다.
+                //※ 액티비티가 3개 이상일경우엔 Intent_Flag를 사용하는것이 효과적이다.
 
                 intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_SINGLE_TOP)
                 intent.addFlag(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
-                -FLAG_ACTIVITY_CLEAR_TOP (해당 액티비티 clear)
-                -FLAG_ACTIVITY_SINGLE_TOP (기존에 액티비티가 존재하면 재사용)
+                -※ FLAG_ACTIVITY_CLEAR_TOP (해당 액티비티 clear)
+                -※ FLAG_ACTIVITY_SINGLE_TOP (기존에 액티비티가 존재하면 재사용)
 
                 FLAG_ACTIVITY_BROUGHT_TO_FRONT
                 FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
@@ -56,11 +56,7 @@ public class IntentSubActivity extends AppCompatActivity {
                 FLAG_ACTIVITY_NO_HISTORY
                 FLAG_ACTIVITY_NO_USER_ACTION
                 FLAG_ACTIVITY_REORDER_TO_FRONT
-
 */
-
-
-
             }
         });
     }

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class Back2Activity extends AppCompatActivity {
 
-
+    final int WAIT_TIME = 2000;
     boolean backPressFlag = false;
 
     @Override
@@ -29,7 +29,7 @@ public class Back2Activity extends AppCompatActivity {
             backPressFlag = true;
 
             //2초후에 handler호출하여 backPressFlag 초기화
-            handle.sendEmptyMessageDelayed(0, 2000);
+            handle.sendEmptyMessageDelayed(0, WAIT_TIME);
 
         } else {
             super.onBackPressed();
@@ -41,9 +41,7 @@ public class Back2Activity extends AppCompatActivity {
     Handler handle = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-
             backPressFlag = false;
-
         }
     };
 
