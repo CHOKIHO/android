@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -19,13 +20,20 @@ public class GameView extends View {
     int width, height; // 현재뷰의 너비와 높이
     Bitmap back1, back2, unit;
 
-    //각 배경으 y좌표를 저장하는 변수
+    //각 배경의 y좌표를 저장하는 변수 (배경 스크롤)
     int back1_y, back2_y;
+
     //전투기 크기와 좌표
     int unitW, unitH, unitX, unitY;
 
     //이미지추가를 쉽게하기위해........
     Canvas canvas;
+
+    //----------------------------------------추가부분
+    int dx=5, dy=5;
+
+
+
 
     public GameView(Context context) {
         super(context);
@@ -65,8 +73,11 @@ public class GameView extends View {
 
     private void init() {
 
-        //이미지 사이즈 설정 및 좌표 초기화 메서드  <-- 휴대폰 사이즈 맞게 리사이징
-        // 두이미지간 연결부분 개선위해 height+10을 사용
+        //비트맵이미지 스케일작업
+        /*
+           이미지 사이즈 설정 및 좌표 초기화 메서드  <-- 휴대폰 사이즈 맞게 리사이징
+           두이미지간 연결부분 개선위해 height+10을 사용
+        */
         back1 = Bitmap.createScaledBitmap(back1, width, height+10, true);
         back2 = Bitmap.createScaledBitmap(back2, width, height+10, true);
 
@@ -125,7 +136,6 @@ public class GameView extends View {
         if (back2_y >= height) {
             back2_y = -height;
         }
-
     }
 
     @Override
@@ -133,9 +143,31 @@ public class GameView extends View {
         this.canvas = canvas;
         progressState();
 
+        //전투기 이동
+
+
+
+
+        canvas.drawBitmap(unit, unitX, unitY, null);
+
+
+
+
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
 
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            //Toast.makeText(context, "click", 0).show();
+
+            unitX = (int)event.getX();
+            unitY = (int) event.getY();
+
+        }
+
+        return false;
+    }
 }
 
 
