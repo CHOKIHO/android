@@ -28,7 +28,7 @@ public class MyAdapter extends ArrayAdapter<String>{
     ListView list;
     static int num=0;
 
-    //파라메터중 resource가 중요  R.layout.list_form이 resource로 넘어온다.
+    //※중요 - 파라메터중 resource(R.layout.list_form)가 int resource로 넘어온다.
     public MyAdapter(Context context, int resource, ArrayList<String> arr, ListView list) {
         //ListView는 넘길수 없다
         super(context, resource, arr);
@@ -58,6 +58,8 @@ public class MyAdapter extends ArrayAdapter<String>{
         LayoutInflater linf = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //MyAdapter 파라메터
+        //convertView는 아무것도 없는상태이므로 LayoutInflater.inflater를 통해 Layout구성
+        //구성된 convertView에서 access할 위젯을 찾아 표시할 값을 배정한다.
         convertView = linf.inflate(resource, null);
 
         String str = arr.get(position);
@@ -68,6 +70,7 @@ public class MyAdapter extends ArrayAdapter<String>{
         TextView  list_form_text1 = (TextView) convertView.findViewById(R.id.list_form_txt1);
         //정수형을 넣을수 없다.
         list_form_text1.setText(""+position);
+
 
         Log.d("MY", "getView: call" + num++);
 
