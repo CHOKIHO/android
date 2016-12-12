@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 edit.commit();
 
                 Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
-                intent.putExtra("tutorial_check", "true");
+                intent.putExtra("tutorial_check", "false");
 
                 startActivity(intent);
                 finish();

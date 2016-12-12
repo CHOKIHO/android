@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -46,12 +47,15 @@ public class MyView2 extends View {
                 y = (int) event.getY();
                 //화면에 터치된 좌표를 기억
                 path.moveTo(x, y);
+                Log.d("MY", "moveTo: x=" + x + " ,y=" + y);
                 break;
 
             case MotionEvent.ACTION_MOVE:
                 //움직인 좌표
                 x = (int) event.getX();
                 y = (int) event.getY();
+
+                Log.d("MY", "lineTo: x=" + x + " ,y=" + y);
 
                 path.lineTo(x, y);
 

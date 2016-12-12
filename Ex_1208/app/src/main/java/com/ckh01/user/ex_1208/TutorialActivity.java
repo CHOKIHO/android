@@ -38,7 +38,10 @@ public class TutorialActivity extends AppCompatActivity {
         String tcheck = (String)intent.getStringExtra("tutorial_check");
         Log.d("MY", "onCreate: tcheck = "+ tcheck);
 
-        if (tcheck == "true")
+        if (new String("true").equals(tcheck))
+        //if (tcheck.equals(new String("true")))
+        //if (Objects.equals(tcheck, new String("test")) )
+
             check.setChecked(true);
 
         start.setOnClickListener(new View.OnClickListener() {

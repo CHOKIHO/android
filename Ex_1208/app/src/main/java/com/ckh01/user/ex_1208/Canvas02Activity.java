@@ -9,7 +9,7 @@ public class Canvas02Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MyView2 view2 = new MyView2();
-        setContentView();
+        MyView2 view2 = new MyView2(this);
+        setContentView(view2);
     }
 }

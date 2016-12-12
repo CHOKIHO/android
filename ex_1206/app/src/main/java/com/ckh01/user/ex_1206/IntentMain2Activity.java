@@ -29,8 +29,12 @@ public class IntentMain2Activity extends AppCompatActivity {
                  */
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
+                //Intent i = new Intent(Intent.ACTION_CALL);
+
+
                 //uri는 http://까지 인식 Intent 생성자에 Intent.ACTION_VIEW를 지정해야 web으로 연동
                 i.setData(Uri.parse("http://www.naver.com"));
+                //i.setData(Uri.parse("tel:01043595829"));
 
                 //실제화면전환 (인텐트의 정보를 가지고 화면 전환)
                 startActivity(i);
