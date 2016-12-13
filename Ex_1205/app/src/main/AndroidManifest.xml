@@ -12,12 +12,13 @@
         <activity android:name=".VisibleActivity" />
         <activity android:name=".ButtonEffectActivity" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".AlertActivity"></activity>
+        <activity android:name=".AlertActivity" />
         <activity android:name=".NumberActivity" />
-        <activity android:name=".DialogActivity"></activity>
-        <activity android:name=".Work01Activity">
-        </activity>
+        <activity android:name=".DialogActivity" />
+        <activity android:name=".Work01Activity"></activity>
         <activity android:name=".RatingActivity">
+        </activity>
+        <activity android:name=".EventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
