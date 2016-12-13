@@ -1,0 +1,35 @@
+
+
+1. 구글 개발자 사이트 접속
+2. 프로젝트 만들기
+3. Google Maps API
+   1) Google Maps Android API  - (사용 설정)
+   2) 사용자 인증정보
+      -OAuth 동의화면
+	  -사용자 인증 정보 만들기 - API키
+	  
+	    AIzaSyBujwV0n6Y-u2HftMRivoi284d4hODCLzE
+		
+	 -키제한사항-	Android앱	
+	 -패키지 이름 및 지문 추가
+	  패키지이름 : com.ckh5829.user.ex_googlemap
+	  인증서지문 만들기
+            1) PC
+              C:\Users\USER\.android\debug.keystore
+			  [cmd 실행]
+			  keytool -exportcert -alias androiddebugkey -keystore C:\Users\USER\.android\debug.keystore -list -v
+              키저장소 비밀번호 입력 (android)
+			  SH1 : B9:43:AB:F7:2E:C4:2F:4D:75:37:73:78:76:E4:A9:41:B0:38:F0:F2
+			  
+			   페이지이름 및 지문추가
+
+4. 라이브러리 추가
+   File > ProjectStructure > app > Dependencies > play-services
+            -com.google.android.gms:play-services:10.0.1 추가
+	
+build.gradle에 자동추가됨 (compile 'com.google.android.gms:play-services:10.0.1')	
+			
+			   
+   
+
+
