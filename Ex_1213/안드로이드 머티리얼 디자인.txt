@@ -1,0 +1,23 @@
+
+안드로이드 BR 기본예제
+
+  1) 문자메시지 수신
+     http://bitsoul.tistory.com/153
+	  
+	  
+안드로이드 서비스 기본예제 
+   1) 배경음악 play
+     http://bitsoul.tistory.com/147   
+
+	 
+
+http://freehoon.tistory.com/entry/안드로이드-Navigation-Drawer-Activity-알아보기	 
+안드로이드 머티리얼 디자인
+	CoordinatorLayout
+	AppBarLayout
+	CollapsingToolbarLayout
+	TabLayout
+	NavigationMenu
+	TextInputLayout
+	FloatingActionButton
+	Snackbar

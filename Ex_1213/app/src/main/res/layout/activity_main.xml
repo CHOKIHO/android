@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ckh5829.user.ex_1213.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_page1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/page_selector"/>
+        <Button
+            android:id="@+id/btn_page2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/page_selector"
+            android:layout_marginLeft="10dp"/>
+        <Button
+            android:id="@+id/btn_page3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/page_selector"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tab_layout">
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>
