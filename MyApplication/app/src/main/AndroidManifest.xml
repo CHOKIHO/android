@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ckh5829.user.ex_1212">
+    package="com.ckh5829.user.myapplication">
 
     <application
         android:allowBackup="true"
@@ -8,26 +8,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SubActivity" />
-
-        <!-- 화면 portrait, landscape시 데이타 유지, 키보드 내리기 -->
-
         <activity
-            android:name=".CameraResultActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".ResultMainActivity"></activity>
-        <activity android:name=".PinchToZoomActivity">
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-        <activity android:name=".CalActivity">
-
-
         </activity>
     </application>
 
