@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--동시에 여러 애니메이션을 설정 (Root Element : <set>)
+  ※res 폴더에 anim 폴더 생성 (cf. 사운드의 경우 raw) → 안드로이드에서 fix 폴더임
+-->
+
+<!-- fillAfter : 애니메이션의 마지막 상태값을 유지하는 속성-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+
+    <!--투명도 설정 : 메뉴가 보여지게 할 에니메이션 파일 -->
+    <!--
+        <alpha
+        android:fromAlpha="0.0"   // 완전투명
+        android:toAlpha="1.0"     // 완전불투명
+        android:duration="500"/>  // 진행시간
+    -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="500"/>
+
+    <!--위치관련 설정 -->
+    <!-- linearLayout의 좌표를 -100% pixel 만큼 좌측으로 이동시켜 놓은후
+         0.5초 동안 원위치시키면서 애니메이션 효과를 준다.
+     <translate
+        android:fromXDelta="-100%p"    //처음 x좌표
+        android:fromYDelta="0%p"       //처음 y좌표
+        android:toXDelta="0%p"         //끝 x좌표
+        android:toYDelta="0%p"         //끝 y좌표
+        android:duration="500"/>       //진행시간
+     -->
+    <translate
+        android:fromXDelta="-100%p"
+        android:toXDelta="0%p"
+        android:fromYDelta="0%p"
+        android:toYDelta="0%p"
+        android:duration="500"/>
+</set>
+
+
+
+
+
+
+
