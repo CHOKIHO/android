@@ -1,0 +1,19 @@
+
+안드로이드 에뮬레이터에 db파일 넣기
+
+1.  DB Browser for SQLite 다운받기
+
+     https://sourceforge.net/projects/sqlitebrowser/
+     https://github.com/sqlitebrowser/sqlitebrowser/releases
+
+2. 새 데이터베이스 및 테이블  생성
+   myDB.db, friend
+   
+ 3. 안드로이드 스튜디오 프로젝트 main에 assets 폴더생생후 myDB.db 복사
+   (C:\android_study\work\Ex_Sqlite\app\src\main)
+   
+ 4. 휴대폰 저장소로 outputStream을 작성
+ 
+ 5. Tool메뉴 > android device monitor > File Explorer
+       Storage > sdcard > database > myDB.db 파일 생성 확인
+ 

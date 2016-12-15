@@ -1,0 +1,10 @@
+
+에뮬레이터에서 apk 실행시키기
+
+1. 설치할 에뮬레이터를 실행시키기
+
+2. SDK의 platform-tools 디렉토리에
+   설치할 apk 파일들을 복사
+   
+3. adb install app.apk
+   adb uninstall app.apk
