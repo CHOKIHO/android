@@ -51,6 +51,7 @@ public class IntentMain2Activity extends AppCompatActivity {
                 //※이동할 액티비티는 AndroidManifest에 반드시 정의되어 있어야함.
                 i.setClass(IntentMain2Activity.this, IntentSubActivity.class);
 
+                //동일표현
                 //Intent i = new Intent(IntentMain2Activity.this, IntentSubActivity.class);
                 startActivity(i);
             }

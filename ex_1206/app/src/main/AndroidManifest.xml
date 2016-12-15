@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".IntentMain2Activity" >
+
+        </activity>
+        <activity android:name=".IntentSubActivity" />
+        <activity android:name=".HandlerActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +23,10 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".IntentSubActivity" />
-        <activity android:name=".HandlerActivity" />
-        <activity android:name=".BackActivity"></activity>
+        <activity android:name=".BackActivity">
+        </activity>
         <activity android:name=".Back2Activity">
+
         </activity>
         <activity android:name=".BackButtonActivity">
 

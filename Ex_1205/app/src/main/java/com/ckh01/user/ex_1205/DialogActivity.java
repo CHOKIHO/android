@@ -29,12 +29,12 @@ public class DialogActivity extends AppCompatActivity {
                 //다이얼로그 생성 (context -> 화면구성)
                 dialog = new Dialog(DialogActivity.this);
 
-                //다이얼로그 타이틀바 제거 (setContentView 전에)
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                //다이얼로그 타이틀바 제거 (dialog.setContentView 전에)
+                //dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 //다이얼로그 반투명 효과 제거
-                dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                //dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
                 //다이얼로그 배경 제거
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 dialog.setContentView(R.layout.dialog_layout);
 

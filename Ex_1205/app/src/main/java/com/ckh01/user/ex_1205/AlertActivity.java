@@ -54,10 +54,11 @@ public class AlertActivity extends AppCompatActivity {
               .setIcon(R.mipmap.ic_launcher);
 
 
-        dialog.setPositiveButton("예", click);
+        //dialog.setPositiveButton("예", click);
         //dialog.setNeutralButton("maybe", click);
-        dialog.setNegativeButton("취소", click);
+        //dialog.setNegativeButton("취소", click);
 
+        dialog.setPositiveButton("예", click).setNegativeButton("취소", click).setNeutralButton("maybe", click);
         //다이알로그는 인터페이스다
         dialog.show();
 
