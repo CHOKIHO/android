@@ -50,8 +50,11 @@ public class Notification01Activity extends AppCompatActivity {
                 case R.id.actionBtn:
 
                     Intent intent = new Intent(Notification01Activity.this, Notification01Activity.class);
+
                     PendingIntent pendingIntent = PendingIntent.getActivity(Notification01Activity.this,
                             0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
                     //알림생성 및 액션추가
                     notification = new NotificationCompat.Builder(Notification01Activity.this)

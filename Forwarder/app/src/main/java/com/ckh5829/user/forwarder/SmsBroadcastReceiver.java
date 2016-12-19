@@ -1,9 +1,14 @@
 package com.ckh5829.user.forwarder;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
@@ -16,8 +21,20 @@ import java.util.Locale;
  */
 
 public class SmsBroadcastReceiver extends BroadcastReceiver {
+
+    private Context mContext;
+    private NotificationManager mNotificationManager;
+
+
     @Override
     public void onReceive(Context mContext, Intent intent) {
+
+        this.mContext = mContext;
+        String action = intent.getAction();
+
+        //Log.e("the time is right","yay!");
+        //Intent in = new Intent(mContext.getApplicationContext() , MainActivity.class);
+        //mContext.startService(in);
 
         if ("android.provider.Telephony.SMS_RECEIVED".equals(intent.getAction())) {
             Log.d("onReceive()","문자가 수신되었습니다");
@@ -49,30 +66,52 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
             // abortBroadcast();
             // 우선순위가 낮은 다른 문자 앱이 수신을 받지 못하도록 함
 
-            /**
-             * 날짜 형식을 우리나라에 맞도록 변환합니다
-             */
 
-            Intent smsIntent = new Intent(mContext, ForwardActivity.class);
-            smsIntent.putExtra("originNum", origNumber);
-            smsIntent.putExtra("smsDate", originDate);
-            smsIntent.putExtra("originText", message);
+            //특정번호만 포워딩하기
 
-            smsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (origNumber.equals(new String("15881688"))) {
 
-            mContext.startActivity(smsIntent);
-/*
+                Log.d("MY", "onReceive: "+ origNumber);
+                return;
 
-            PendingIntent p = PendingIntent.getActivity(mContext, 0, smsIntent, 0);
-            try {
-                p.send();
-            } catch (PendingIntent.CanceledException e) {
-                e.printStackTrace();
             }
 
-*/
 
 
+            /****************************************************************
+
+                Notification 띄우기 (originNum, smsDate, originText)
+
+            *****************************************************************/
+
+
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(mContext);
+
+            Intent notificationIntent = new Intent(mContext.getApplicationContext(), ShowActivity.class);
+            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+            notificationIntent.putExtra("originNum", origNumber);
+            notificationIntent.putExtra("smsDate", originDate);
+            notificationIntent.putExtra("originText", message);
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+
+            PendingIntent pendingIntent = PendingIntent.getActivity(mContext.getApplicationContext(),
+                    0, notificationIntent, PendingIntent.FLAG_ONE_SHOT);
+
+
+
+            //알림생성 및 액션추가
+            Notification notification = new NotificationCompat.Builder(mContext)
+                    .setContentTitle("문자포워딩")
+                    .setContentText("포워딩")
+                    .setSmallIcon(R.mipmap.x64)
+                    .setContentIntent(pendingIntent)
+                    //.addAction(R.mipmap.ic_launcher,"내용보기", pendingIntent)   //추가버튼
+                    .build();
+
+            notificationManagerCompat.notify(0, notification);
 
         }
     }
