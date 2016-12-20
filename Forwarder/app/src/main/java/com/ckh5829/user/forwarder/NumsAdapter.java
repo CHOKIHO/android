@@ -22,14 +22,12 @@ public class NumsAdapter extends ArrayAdapter<String> {
     private ArrayList<String> arrs;
     private ListView list;
 
-
-    public NumsAdapter(Context context, int resource, ArrayList<String> arrs, ListView list) {
+    public NumsAdapter(Context context, int resource, ArrayList<String> arrs) {
         super(context, resource, arrs);
 
         this.context = context;
         this.resource = resource;
         this.arrs = arrs;
-        this.list = list;
     }
 
     @NonNull
