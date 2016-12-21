@@ -25,7 +25,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter{
         switch (position) {
 
             case PageInfo.FRAGMENT_PAGE1:
-                //page1이 호출될때 fragment에 우측으로 나라힌 붙힌다.
+                //page1이 호출될때 fragment에 우측으로 나란히 붙힌다.
                 return new Page1Activity();
             case PageInfo.FRAGMENT_PAGE2:
                 return new Page2Activity();
@@ -35,8 +35,6 @@ public class MyPagerAdapter extends FragmentPagerAdapter{
 
         return null;
     }
-
-
 
     // 뷰페이저가 저장하는 페이지 수
     // page 총 갯수

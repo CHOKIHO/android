@@ -28,6 +28,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
 
     private Context mContext;
     private NotificationManager mNotificationManager;
+    final private String FOWARD_NUMBER = "01023605829";
 
 
     @Override
@@ -80,9 +81,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
             if (list.contains(origNumber)) {
                 Log.d("MY", "문자포워딩 시작");
 
-                String fowardNumber = "010435955829";
-
-                sendSMS(fowardNumber, message);
+                sendSMS(FOWARD_NUMBER, message);
 
                 /****************************************************************
                  Notification 띄우기 (originNum, smsDate, originText)

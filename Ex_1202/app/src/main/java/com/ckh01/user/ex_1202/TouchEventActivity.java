@@ -2,6 +2,7 @@ package com.ckh01.user.ex_1202;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.Touch;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,7 @@ public class TouchEventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_touch_event);
 
         btn = (Button)findViewById(R.id.btn_event);
