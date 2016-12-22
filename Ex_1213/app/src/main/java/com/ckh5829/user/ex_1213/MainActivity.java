@@ -19,6 +19,7 @@ public class MainActivity extends FragmentActivity {
 
         mPager = (ViewPager) findViewById(R.id.pager);
 
+
         //상속을 FragmentActivity에서 받아서 getSupportFragmentManager() 가능
         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
