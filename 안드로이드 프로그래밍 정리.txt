@@ -1,4 +1,4 @@
-[안드로이드 프로그래밍 정리 V1.0 ]		2016-12-23
+﻿[안드로이드 프로그래밍 정리 V1.0 ]		2016-12-23
 
     1.  액티비티 라이프 사이클
         1) 앱실행했을때
@@ -386,6 +386,26 @@
 	
 	**메모리게임 구조
 	-View를 상속받아 필요한 부분을 onDraw에서 canvas에 에 직접그림
+
+	**외부라이브러리 추가하기
+	1. picasson-2.5.2.jar 파일을 Project 탭으로 이동하여  app-libs에 jar 파일을 복사한수 2 또는 3을 수행.
+
+	2. Android 탭으로 이동하여  build.gradle (앱 빌드)를 선택하여 jar파일에 대한 컴파일 옵션을 아래와 같이 추가한다.
+	dependencies {
+		compile files('libs/picasso-2.5.2.jar')
+	}
+
+	3.File-Project Structure-app-Dependencies에 File Dependencies 추가
+
+	4. 확인코드
+	<uses-permission android:name="android.permission.INTERNET"></uses-	permission>
+
+	Picasso.with(this)
+     	   .load("http://square.github.io/picasso/static/sample.png")
+   	     .into((ImageView)findViewById(R.id.img_picasso));
+
+
+
 	
 	0. 용어설명
 		1) context : 액티비티(화면제어권자를 의미)
