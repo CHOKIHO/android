@@ -404,6 +404,12 @@
      	   .load("http://square.github.io/picasso/static/sample.png")
    	     .into((ImageView)findViewById(R.id.img_picasso));
 
+	**ActionBar 이전버튼 활성화하기
+	Manifest.xml의 parentActivityName 추가하기
+        	<activity android:name=".ui.activity.TestActivity"
+            android:label="@string/title_activity_help"
+            android:parentActivityName=".ui.activity.MainActivity"></activity>
+
 
 
 	
