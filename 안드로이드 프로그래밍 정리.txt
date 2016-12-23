@@ -1,0 +1,399 @@
+[안드로이드 프로그래밍 정리 V1.0 ]		2016-12-23
+
+    1.  액티비티 라이프 사이클
+        1) 앱실행했을때
+          onCreate(첫실행시 한번만 호출)→onStart→onResume
+        2) 홈버튼 일시정지
+          onPause→onStop
+        3) 일시정지되었던 앱을 재실행했을때
+          onRestart→onStart→onResume
+        4) 뒤로가기로 앱 종료시
+          onPause→onStop→onDestroy(종료시 한번만 호출)
+         
+	2. layout 위젯과 액티비티클래스의 연결
+		1) xml레이이웃과 Activity클래스의 연결
+			① 뷰를 담당하는 res>layout>activity.xml을 생성
+			② 액티비티 onCreate의 setContentView(R.layout.activity); 레이아웃파일명을 사용
+		2) xml위젯과 Activity클래스의 연결
+			① 레이아웃내 억세스할 위젯 id지정(@+id)
+			② 액티비티
+			    - 속성으로 억세스할 위젯 선언 (전역)
+			    - onCreate에서 findViewById를 사용하여 연결 (View를 위젯으로 반드시 캐스팅-DownCasting)
+				- 위젯에 리스너설정→리스너의 인터페이스 구현 (오버라이드,익명)
+			but_BLUE.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+					txt.setBackgroundColor(Color.BLUE);
+					txt.setText("BLUE");
+				}
+			});
+			
+	3. ListView 위젯 (context*, 선택 위젯은 adapter가 있어야 event처리가 가능함)
+		1) ArrayAdapter 만들기 (자료집합 Array → ArrayAdapter<String> → setAdapter(adapter))
+		    ①생성자 : new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, array);
+		    ②ListView.setAdapter(adapter);
+		2) Custom Adapater 만들기 (안드로이드가 제공하는 레이아웃이 아닌 사용자가 직접지정)
+			① 구조도
+			   리스트뷰  ↔  어뎁터(Adapter 상속, 커스텀레이아웃적용) ↔ 자료구조(ArrayList<>)
+			② 리스트뷰 위젯 → 리스트뷰에 표현할 자료집합 생성
+   			    → Adapter클래스 상속한 MyAdapter 클래스 생성할대 생성자의 파라메터가 중요
+				  (Context context, int resource, ArrayList<String> arr, ListView list)
+				→ getView 오버라이드하여 inflater를 사용하여 convertView 생성
+				→ 리스트뷰 setAdapter → 자료변경시 adapter.notifyDataSetChanged(); 호출
+				→ 리스트뷰의 Item 클릭이벤트 처리 setOnItemClickListener(click);
+				→ AdapterView.OnItemClickListener 인터페이스 구현
+
+	4. TouchListener (클릭이벤트가 없는 위젯에서 터치 감지)
+	    1) MotionEvent 종류 :  ACTION_DOWN, ACTION_UP, ACTION_MOVE(getX(), getY())
+		2) TextView
+			①View.OnTouchListener 인터페이스 구현 (onTouch)
+			②setOnTouchListener (View.OnTouchListener)
+	
+	5. 동적 CustomActivity
+		1) xml 레이아웃의 <LinearLayout>의 id만을  지정
+		2) 액티비티에서 동적으로 위젯 생성 및 배치
+			①Button btn = new Button(context);
+			②리스너, Text, Width, Height, LinearLayout.weight 등 모든것을 코드로 설정가능
+			③xml레이아웃.addView(btn);
+	
+	6. 	Inflater 사용 (xml레이아웃을 동적으로 지정)
+		1) 레이아웃을 사용하기 위해 getSystemService*를 사용하여 권한 할당받기
+		2) 사용법
+			①parent =(RelativeLayout)findViewById(R.id.activity_inflater);
+			②linf = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+			③sub = linf.inflate(R.layout.sub_layout, parent);
+			④sub레이아웃의 버튼찾기
+		        Button event = (Button)sub.findViewById(R.id.btn_event);
+	
+	7. 버튼에 효과주기 (layout, res/drawble, mipmap 사용)
+		1) mipmap : 배경으로 사용할 이미지 추가
+		2) drawable : 상황(버튼클릭전후)에 따른 표시 selector를 작성
+		   ①selector 구성 (state_pressed 설정)
+		    <?xml version="1.0" encoding="utf-8"?>
+			<selector xmlns:android="http://schemas.android.com/apk/res/android">
+			<item
+				android:state_pressed="true"
+				android:drawable="@mipmap/a_alarm"/>
+			<item
+				android:state_pressed="false"
+				android:drawable="@mipmap/b_alarm"/>
+			</selector>
+		2) layout : 버튼 백그라운드 속성 지정(android:background="@drawable/search_selector")
+		
+	8. 타이틀바에 메뉴 만들기
+		1) 사용법
+			①res/menu 디렉토리 생성후 메뉴레이아웃 작성
+			<?xml version="1.0" encoding="utf-8"?>
+			<menu xmlns:android="http://schemas.android.com/apk/res/android">
+				<item
+					android:id="@+id/menu1"
+					android:title="ADD" />
+				<item
+					android:id="@+id/menu2"
+					android:title="EDIT" />
+				<item
+					android:id="@+id/menu3"
+					android:title="EXIT"/>
+			</menu>
+			②onCreateOptionsMenu(Menu menu) 오버라이드
+				getMenuInflater().inflate(R.menu.menu1, menu);
+			③메뉴 이벤트 리스너 설정가능
+				onOptionsItemSelected(MenuItem item) 오버라이드
+
+	9. 다이얼로그 만들기
+		1) 확인 대화상자 (AlertDialog.Builder : 레이아웃이 정해져있음)
+			① AlertDialog.Builder dialog = new AlertDialog.Builder(AlertActivity.this);
+			② AlertDialog 타이틀, 메시지, 아이콘, 버튼 설정가능
+			        dialog.setTitle("종료").setMessage("종료할까요?").setIcon(R.mipmap.ic_launcher);
+			        dialog.setPositiveButton("예", click).setNegativeButton("취소", click).setNeutralButton("maybe", click);
+					dialog.show();
+			③확인대화상자 버튼 이벤트 만들기
+			DialogInterface.OnClickListener click = new DialogInterface.OnClickListener() 재정의
+		
+		2) 커스텀 다이얼로그 만들기
+			① 커스텀 다이얼로그 레이아웃 만들기
+			② 다이얼로그 생성 (화면구성 context 필요) 및 화면구성
+                dialog = new Dialog(DialogActivity.this);	
+				dialog.setContentView(R.layout.dialog_layout);	
+				dialog.setTitle("메뉴선택");
+                dialog.setCancelable(false);  (뒤로가기, 주변터치로 막기)
+			③ 다이얼로그 이벤트 처리
+                btn1 = (Button)dialog.findViewById(R.id.btn1);
+			④dialog.show();		
+		3) DatePickerDialog
+			①캘린더를 이용하여 오늘 날자를 받아온후
+			   dialog = new DatePickerDialog(IntentMainActivity.this, dateListener, y, m, d);
+			   
+			②날자변경을 위한 이벤트 재정의
+				DatePickerDialog.OnDateSetListener	
+		
+	10. 액티비티간 화면전환
+		1) 기본제공 앱의 Activity로 연결
+            ①ACTION_VIEW, ACTION_CALL
+				Intent i = new Intent(Intent.ACTION_VIEW);
+                //Intent i = new Intent(Intent.ACTION_CALL);
+                i.setData(Uri.parse("http://www.naver.com"));
+                //i.setData(Uri.parse("tel:01043595829"));
+                startActivity(i);		
+		2) 사용자 Activity간 이동
+			Intent i = new Intent(IntentMain2Activity.this, IntentSubActivity.class);
+			startActivity(i);
+		3) 액티비티간 이동시 액티비티가 겹치는 현상(액티비티 스택)									
+			① 액티비티가 2개일경우 호출받고 이전으로 되돌아갈경우 startActivity(i), finish()를 사용
+			②	액티비티가 3개이상일경우
+		4) Activity간 파라메터 전달
+			①intent.putExtra ("키", "값") → Intent intent = getIntent(); intent.getStringExtra("키");
+			②Bundle 생성, bundle.putString("키", 값), intent.putExtra(bundle) →
+							Bundle bundle = intent.getExtras(); bundle.getString("키");
+		
+				
+	11. 핸들러* (android.os package) 사용하기
+		1) 구조도 (타이머 효과)
+		    핸들러호출(sendEmptyMessage) → 핸들러내 재귀호출 ← 핸들러 정지(removeMessages)
+		2) 사용법
+			① 핸들러 클래스 상속한 handler 생성하고 handleMessage 오버라이드
+			② Thread가 필요한 곳에서 handler.sendEmptyMessage(0); 호출
+			③반복실행을 위해 handleMessage내에서 handler.sendEmptyMessageDelayed(0, 1000);
+			④Thread정지시 handler.removeMessages(0); 호출
+	
+	12. SharedPreferences (앱에서 사용될 값을 저장하고 불러오기)
+		1)프레퍼런스 로드
+			①프레퍼런스 선언 
+			   SharedPreferences prefer; 
+			②프레퍼런스 생성 (context 필요)
+			 prefer = PreferenceManager.getDefaultSharedPreferences(context);
+			③프레퍼런스 로드
+       		 num = prefer.getInt("save", 0);
+		2)프레퍼런스 저장 (앱종료시)	 
+			① 프레퍼런스.에디터 객체 생성
+                SharedPreferences.Editor edit = prefer.edit();
+			②에디터의 putInt로 value 저장
+				edit.putInt("save", num);
+            ③물리적으로 commit해야 저장됨
+				edit.commit();
+		
+	13. Canvas를 사용한 액티비티
+		1) 사용자 정의 View 생성
+		    ①xml레이아웃을 이용한 뷰가 아닌 사용자 정의 View를 생성
+			②생성자로 Activity의 context를 넘겨줌
+		2) View의 onDraw메서드 재정의
+			①직접 그릴경우 onDraw내의 super.onDraw(canvas); 필요없음
+		    ②onDraw의 canvas에 그림을 그리기 위해서는 Paint 객체 필요
+			③canvas.drawRect, canvas.DrawCircle, drawPath 사용하여 직접 draw수행 
+		       -drawPath : Path 객체필요
+			④그림이 변경될때 기존 화면은 무효화하고 새로 onDraw 호출해야함
+			   -invalidate(); 메서드가 이를 담당함.   
+	
+	14. 애니메이션 처리
+		1) FrameLayout을 이용한 애니메이션 처리
+			①애니메이션 처리할 이미지를 mipmap에 복사
+			②애니메이션 처리할 <ImageView> src에 이미지 불러오기
+			③ <FrameLayout>에 <ImageView>겹치기
+				<FrameLayout><ImageView></FrameLayout>
+			④Handler를 이용하여 이미지의 setVisiibility(Visible,InVisible)를 변경	
+		2) res/drawable의 animaion.xml 이용하기
+			①애니메이션 처리할 이미지를 mipmap에 복사
+			②res/drawable에 애니메이션 item xml 작성
+			<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+				<item android:drawable="@mipmap/cp" android:duration="100" />
+				<item android:drawable="@mipmap/cr" android:duration="100" />
+				<item android:drawable="@mipmap/cs" android:duration="100" />
+			</animation-list>
+			③만들어둔 drawable의 animation.xml과 연결하기
+				AnimationDrawable ani;
+				img = (ImageView) findViewById(R.id.img);
+				img.setBackgroundResource(R.drawable.animation);
+				ani = (AnimationDrawable) img.getBackground();
+				ani.start();
+		3) res/anim의 animaion xml이용하기
+			①애니메이션 처리할 이미지를 mipmap에 복사
+			②res/anim에 애니메이션 item xml 작성 (aplph, translate, rotate)
+			<?xml version="1.0" encoding="utf-8"?>
+			<set xmlns:android="http://schemas.android.com/apk/res/android"
+				android:fillAfter="true">
+				<alpha
+					android:fromAlpha="1.0"
+					android:toAlpha="0.0"
+					android:duration="500"/>
+				<translate
+					android:fromXDelta="0%p"
+					android:toXDelta="-100%p"
+					android:fromYDelta="0%p"
+					android:toYDelta="0%p"
+					android:duration="500"/>
+			</set>
+			③애니메이션 객체 선언 및 애니메이션 적용대상 선언
+			    Animation menu_visible_ani, rotate_ani;
+				LinearLayout visible_layout;  //버튼 4개를 포함하는 layout
+			④ 애니메이션 xml을 AnimationUtils를 이용하여 불러오기
+                rotate_ani = AnimationUtils.loadAnimation(AnimationActivity.this, R.anim.menu_rotate);
+			⑤ 애니메이션 적용대상에 설정	
+                btn_menu.startAnimation(rotate_ani);
+	
+	15. ViewPager (3개의 프래그먼트를 수평배열)
+		※ ViewPager 위젯의 경우 
+			<android.support.v4.view.ViewPager>와 <android.view.ViewPager> FragmentManager가 다름
+		1) FragmentActivity를 상속받아 MainActivity 생성
+			① ViewPager 위젯을 xml에 배치
+		    ② ViewPager 아답터 지정
+		         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+			③ViewPager 변경을 감지하는 addOnPageChangeListener 구현
+				 
+		2) *Fragment를 상속받아 Page 생성
+			①onCreateView() 오버라이드하여 View구성
+			     View layout =  inflater.inflate(R.layout.activity_page1, container, false);
+			②버튼이벤트 처리	 
+		3) FragmentPagerAdapter를 상속받아 PageAdapter 생성
+			①생성자로 MainActivity의 FragmentManager를 받아야함
+			②getItem을 오버라이드하여 페이지(Fragment) 전환
+	
+	16. Fragment (동일위치에 프래그먼트를 교체) 
+		1) 구조 
+			①FragmentManager로 부터  FragmentTransaction 객체를 생성
+				FragmentManager fragmentManager = getFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+			②프래그먼트가 들어가야 될 엑티비티의 레이아웃 id와 fragment지정
+				fragmentTransaction.replace(R.id.contents, new MainFragment());
+				fragmentTransaction.commit();
+			③프래그먼트 페이지는 Fragment를 상속받아 생성
+		2) 메인액티비티에서 프래그먼트로 파라메터 전달
+			①Fragment를 상속받은 Fragment페이지에서
+				public static BlankFragment newInstance(String param1, String param2)
+			②메인액티비티에서 프레그먼트페이지 호출시 newInstance()통해 파라메터 전달
+				if(view == findViewById(R.id.fragment1)){
+					fr = new BlankFragment().newInstance("Hi", "Fragment#1");
+				}else {
+					fr = new FragmentTwo().newInstance("Hi", "Fragment#2");
+				}
+			③ 프래그먼트페이지 교체
+				FragmentManager fm = getFragmentManager();
+				FragmentTransaction fragmentTransaction = fm.beginTransaction();
+				fragmentTransaction.replace(R.id.contents, fr);
+				fragmentTransaction.commit();
+		3) 프레그먼트간 이벤트 전달하기 ( 페이지내에 2개의 프래그먼트를 상하로 배치할경우)
+		    1. 프래그먼트 페이지
+			①	Activity 로 데이터를 전달할 커스텀 리스너의 인터페이스 정의
+				public interface CustomOnClickListener{
+					public void onClicked(int id);
+				}
+			② Activity로 데이터를 전달할 커스텀 리스너 선언
+				private CustomOnClickListener customListener;
+			③	onAttach메서드를 오버라이드 하여 Activity로 데이터를 전달할 커스텀 리스너를 연결
+				@Override
+				public void onAttach(Activity activity) {
+					super.onAttach(activity);
+					customListener = (CustomOnClickListener)activity;
+				}
+			④ 프래그먼트 페이지에서 이벤트 발생시
+				customListener.onClicked(v.getId());
+			2.	메인액티비티
+			⑤ 메인액티비티테 HeadFragment.CustomOnClickListener 인터페이스 implements
+			⑥ HeadFragment.CustomOnClickListener의 구현
+				@Override
+				public void onClicked(int id) { }
+			
+	**네이버 API 사용하기
+		1) 준비사항
+			①제목, 저자, 가격, 이미지 정보를 갖는 Book 클래스 생성자
+			②API호출하고 결과페이지(xml)를 파싱하는 클래스 
+			③리스트뷰와 연결할 BookAdapter 클래스 (ArrayAdapter<Book>)
+			④서버와 통신작업을 백그라운로 처리할 AsyncTask 클래스
+		2) 동작원리				
+			비동기처리 클래스에서  
+			    ①네이버 API 통해 데이터를 받고 (Paser)
+				②받은 데이터는 파싱하여 BookModel ArrayList에 저장 (Parser)
+				③ArrayList를 Adapater의 자료구조로 연결 (ViewModelAdapter)
+	
+	**슈팅게임 구조
+		1. 백그라운드 배경 움직이기
+			1) 백그라운드에 사용될 배경이미지 mipmap에 resource에 추가
+			2) 현재뷰의 크기 알아내기
+			①방법1
+				WindowManager wm = (WindowManager) context.getSystemService(WINDOW_SERVICE);
+				DisplayMetrics dm = new DisplayMetrics();
+				wm.getDefaultDisplay().getMetrics(dm);
+				width = dm.widthPixels;
+				height = dm.heightPixels;
+		    ②방법2
+ 			    DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+				width = metrics.widthPixels;
+				height = metrics.heightPixels;
+			2) 배경이미지를 Bitmap 객체로 불러오기
+				①BitmapFactory의 decodeResource를 사용하여 이미지 불러오기
+  				   decode(png->bitmap), getResources == res 폴더와 같음
+				   back1 = BitmapFactory.decodeResource(getResources(), R.mipmap.space);
+				   back2 = BitmapFactory.decodeResource(getResources(), R.mipmap.space);
+			3) 비트맵이미지의 화면에 맞는 스케일작업
+					back1 = Bitmap.createScaledBitmap(back1, width, height+10, true);			
+			4) 배경이미지를 그린후 초기 좌표의 y좌표(top)를 0, -height로 설정 
+					canvas.drawBitmap(back1, 0, back1_y, null);
+			        back1_y =0;
+					back2_y =-height;
+			5) 배경이미지 2장을 한번에 5픽셀씩 증가(배경이 내려오는 효과)와 화면을 벗어날을경우 처리		
+				private void scrollBackground() {
+					//배경2장을 동시에 내린다.
+					back1_y +=5;
+					back2_y +=5;
+
+					//back1 화면을 벗어날경우 다시 위쪽으로 올리기
+					if (back1_y >= height) {
+						back1_y = -height;
+					}
+
+					//back2 화면을 벗어날경우 다시 위쪽으로 올리기
+					if (back2_y >= height) {
+						back2_y = -height;
+					}
+				}
+			6) onDraw에 scrollBackground() 메서드 추가	
+			7) Handler 추가 
+				①invalidate();
+				②10ms로 재귀호출 handler.sendEmptyMessageDelayed(0, 10);
+		
+		2. 전투기 움직이기
+			1) 배경이미지 1)~4) 동일
+			2) 센서를 통한 전투기 움직이기
+				① 센서 매니저 선언
+					SensorManager sensorM;
+				② 센서서비스 권한 얻기
+				sensorM = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+				③센서 이벤트 리스너 등록
+                sensorM.registerListener(this, sensorM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
+				④onSensorChanged 오버라이드하여 전투기의 X, Y 좌표 연결 및 화면 벗어날경우 처리
+					unitX -= (int) sensorEvent.values[0] * 5;   //x축가속도값
+					unitY += (int) sensorEvent.values[1] * 5;
+		
+		3. 미사일 발사
+			1)동작원리 (핸들러의 10ms 재귀호출을 활용)
+				미사일 클래스 생성(좌표, move, 화면밖구분) → 터치이벤트 발생시 미사일 ArrayList에 추가
+				→onDraw에 미사일을 그리고 좌표로 미사일클래스를 지정
+  				   canvas.drawBitmap(missile, ms.x - missileW / 2, ms.y - missileH, null); 
+				→ 미사일 클래스의 move메서드로 좌표 변경, 미사일이 화면밖으로 벗어날경우 ArrayList에서 remove();
+				→ 미사일과 타켓의 좌표를 비교하여 충돌여부 판단
+					
+		4. 사운드 사용하기
+			1) 사운드를 res/raw에 저장
+			2) 사운드 매니저 선언
+				SoundManager soundManager;
+			3) 사운드매니저 초기화 및 등록
+				soundManager = SoundManager.getInstance();
+				soundManager.init(context);
+				//사운드 등록
+				soundManager.addSound(1, R.raw.scream);
+				soundManager.addSound(2, R.raw.shot);			
+			4) 사운드 플레이
+				soundManager.play(1);
+	
+	**메모리게임 구조
+	-View를 상속받아 필요한 부분을 onDraw에서 canvas에 에 직접그림
+	
+	0. 용어설명
+		1) context : 액티비티(화면제어권자를 의미)
+		    토스트, 다이얼로그 등을 호출할때 부모 Activity가 필요한데, 이때 context를 파라메터로 사용 
+		2) getSystemService : 안드로이드가 제공하는 시스템-레벨 서비스를 요청
+		    시스템에서 제공하는 디바이스나 안드로이드 프레임워크내 기능을 다른 애플리케이션과 공유하고자
+            시스템으로부터 객체를 얻을때 사용
+		3) Handler : android.os package Handler 클래스를 상속, Thread를 이용한 타이머 효과  
+		4) Fragment : 액티비티 보다 경량급으로 액티비티와 동일기능 수행
+		
+		

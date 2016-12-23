@@ -290,7 +290,9 @@ public class GameView extends View implements SensorEventListener{
         canvas.drawBitmap(unit, unitX, unitY, null);
 
         //미사일그리기
+
         //미사일 정보는 ArrayList에 담겨져 있으므로 for 문을 반복하며 한개씩 표현
+
         for (int i=0;i<missList.size();i++) {
             Missile ms = missList.get(i);
             canvas.drawBitmap(missile, ms.x - missileW / 2, ms.y - missileH, null);

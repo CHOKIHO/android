@@ -77,6 +77,9 @@ public class NaverActivity extends AppCompatActivity {
 
                     dialog.show();
                     new NaverAsync().execute("통신중입니다."); // donInBackground메서드 호출 (파라메터로 "통신중입니다.")
+
+	                //DaumAsync daumAsync = new DaumAsync(NaverActivity.this, R.layout.book_item, list, myListView);
+	                //daumAsync.execute();
                 }
             }
         });
@@ -88,7 +91,7 @@ public class NaverActivity extends AppCompatActivity {
 
     }
 
-    //Sync추상클래스 상속
+    // Sync추상클래스(AsyncTask) 상속
     //서버와 통신작업을 백그라운드에서 실행할 수 있도록 해주는 클래스가 AsyncTask (진저브래드이상버전)
     //AsyncTask의 제네릭3
     /*

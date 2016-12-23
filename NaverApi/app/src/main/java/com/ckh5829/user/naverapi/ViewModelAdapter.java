@@ -21,14 +21,26 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-
-
 /**
  * Created by USER on 2016-12-09.
- *
+ * <p>
  * 리스트뷰 Footer처리
-  *
  */
+
+
+class myAdapter extends ArrayAdapter<String> {
+
+	public myAdapter(Context context, int resource, int textViewResourceId) {
+		super(context, resource, textViewResourceId);
+	}
+
+	@NonNull
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		return super.getView(position, convertView, parent);
+	}
+}
+
 
 public class ViewModelAdapter extends ArrayAdapter<BookModel> {
 

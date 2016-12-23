@@ -11,15 +11,15 @@
         <activity android:name=".TutorialActivity" >
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".RSPActivity"></activity>
+        <activity android:name=".RSPActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Canvas01Activity">
         </activity>
         <activity android:name=".Canvas02Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>

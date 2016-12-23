@@ -11,18 +11,20 @@
         <activity android:name=".TouchEventActivity">
 
         </activity>
-        <activity android:name=".LotActivity" />
-        <activity android:name=".InflaterActivity">
+        <activity android:name=".LotActivity" >
 
         </activity>
-        <activity android:name=".ListViewActivity">
-        </activity>
-        <activity android:name=".CustomActivity">
+        <activity android:name=".InflaterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".ListViewActivity">
+        </activity>
+        <activity android:name=".CustomActivity">
 
         </activity>
     </application>
