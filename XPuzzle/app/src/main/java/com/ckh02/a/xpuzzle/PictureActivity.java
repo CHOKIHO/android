@@ -42,7 +42,7 @@ public class PictureActivity extends AppCompatActivity {
             imgPictureView.setVisibility(View.GONE);
 
             gridView.setVisibility(View.VISIBLE);
-            gridView.setNumColumns(4);
+            //gridView.setNumColumns(4);
             ImageAdapter ia = new ImageAdapter(PictureActivity.this, imageID);
             gridView.setAdapter(ia);
 
